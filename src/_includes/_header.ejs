@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
+  <% include('../_data/_path') %>
+  <% include('../_data/_url') %>
+  <% include('../_data/_siteData') %>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VITE TEMPLATE</title>
+    <title><%- SITE_DATA.title %></title>
     <meta name="description" content="<%- SITE_DATA.description %>" />
     <meta name="keywords" content="<%- SITE_DATA.keywords %>" />
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="" />
-    <link rel="icon" type="image/svg+xml" href="" />
-    <link rel="icon" type="image/svg+xml" href="" />
-    <!-- stylesheet -->
-    <link rel="stylesheet" href="./assets/scss/styles.scss" />
+    <!-- Icon -->
+    <link rel="shortcut icon" href="<%- PATH.image %>common/favicon.ico">
+    <link rel="apple-touch-icon" href="<%- PATH.image %>common/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="<%- PATH.image %>common/android-chrome-192×192.png" sizes="192x192">
     <!-- OGP -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%- SITE_DATA.url %>index.html" />
@@ -28,18 +29,16 @@
     <meta name="twitter:url" content="<%- SITE_DATA.url %>index.html" />
     <meta name="twitter:title" content="<%- SITE_DATA.title %>" />
     <meta name="twitter:description" content="<%- SITE_DATA.description %>" />
-    <meta name="twitter:image" content="<%- SITE_DATA.url %>assets/images/common/ogp.png" />
+    <meta name="twitter:image" content="<%- SITE_DATA.url %>assets/images/common/ogp.jpg" />
     <!-- Font -->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
     <!-- Google Tag Manager -->
-
     <!-- Google Tag Manager (noscript) -->
+    <script type="module">
+      import "@styles/styles.scss";
+      import "@script/main.js";
+    </script>
   </head>
   <body>
-    <div id="app"></div>
-    テスト
-    <img src="assets/images/vite.svg" alt="" />
-
-    <script type="module" src="./assets/js/index.js"></script>
-  </body>
-</html>

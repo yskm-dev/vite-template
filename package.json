@@ -11,6 +11,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@macropygia/vite-plugin-glob-input": "^0.0.16",
+    "@vituum/vite-plugin-nunjucks": "^0.1.5",
     "autoprefixer": "^10.4.14",
     "fast-glob": "^3.2.12",
     "postcss": "^8.4.21",
@@ -20,6 +22,12 @@
     "stylelint-config-recommended-scss": "^9.0.1",
     "stylelint-prettier": "^3.0.0",
     "vite": "^4.2.0",
+    "vite-plugin-ejs": "^1.6.4",
+    "vite-plugin-eleventy": "^0.3.1",
+    "vite-plugin-handlebars": "^1.6.0",
+    "vite-plugin-html": "^3.2.0",
+    "vite-plugin-live-reload": "^3.0.2",
+    "vite-plugin-nunjucks": "^0.1.10",
     "vite-plugin-sass-glob-import": "^2.0.0",
     "vite-plugin-static-copy": "^0.13.1"
   },

@@ -1,19 +1,24 @@
 import { defineConfig } from 'vite';
 import sassGlobImports from 'vite-plugin-sass-glob-import';
-import path, { join } from 'path';
+import inputPlugin from '@macropygia/vite-plugin-glob-input';
+// import nunjucks from '@vituum/vite-plugin-nunjucks';
+import { eleventyPlugin } from 'vite-plugin-eleventy';
+import liveReload from 'vite-plugin-live-reload';
 
+import path from 'path';
 const srcPath = './src';
 const distPath = './dist';
 
 export default defineConfig({
   base: './',
   root: path.resolve(__dirname, srcPath),
-  publicDir: 'public',
+  publicDir: path.resolve(__dirname, './public'),
   build: {
-    outDir: path.resolve(__dirname, distPath),
     emptyOutDir: true,
+    // polyfillModulePreload: false,
+    outDir: path.resolve(__dirname, distPath),
     rollupOptions: {
-      // input: [path.resolve(__dirname, `${srcPath}/assets/js/index.js`), path.resolve(__dirname, `${srcPath}/assets/scss/styles.scss`)],
+      // input: [`${path.resolve(__dirname, srcPath)}/assets/js/main.js`, `${path.resolve(__dirname, srcPath)}/assets/scss/styles.scss`, ...glob.sync([`./src/**/*.html`], { dot: true })],
       output: {
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split('.').at(1);
@@ -31,21 +36,44 @@ export default defineConfig({
           }
           return `assets/${extType}/[name][extname]`;
         },
-        chunkFileNames: 'assets/js/[name].js',
-        entryFileNames: 'assets/js/[name].js'
+        chunkFileNames: (chunkInfo) => {
+          return 'assets/js/[name].js';
+        },
+        entryFileNames: (entryInfo) => {
+          return 'assets/js/[name].js';
+        }
       }
     }
   },
   resolve: {
     alias: [
       {
+        find: '@styles',
+        replacement: new URL('./src/assets/scss', import.meta.url).pathname
+      },
+      {
+        find: '@script',
+        replacement: new URL('./src/assets/js', import.meta.url).pathname
+      },
+      {
         find: /~(.+)/,
-        replacement: join(process.cwd(), 'node_modules/$1')
+        replacement: path.join(process.cwd(), 'node_modules/$1')
       }
     ]
   },
-  plugins: [sassGlobImports()],
+  plugins: [
+    sassGlobImports(),
+    eleventyPlugin({
+      dir: {
+        includes: './includes',
+        data: './_data'
+      },
+      pathPrefix: '/'
+    }),
+    liveReload('./src/**/*.ejs')
+  ],
   server: {
+    cors: true,
     port: 8000
   }
 });
