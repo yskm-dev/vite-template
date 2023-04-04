@@ -1,0 +1,18 @@
+@use '../00_base/variables' as *;
+@use '../00_base/mixin' as *;
+@use '../00_base/functions' as *;
+
+// for each device
+.u-only-show--pc,
+[data-only-show='pc'] {
+  @include mq() {
+    display: none !important;
+  }
+}
+
+.u-only-show--sp,
+[data-only-show='sp'] {
+  @include mq_min() {
+    display: none !important;
+  }
+}

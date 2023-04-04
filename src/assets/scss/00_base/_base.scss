@@ -1,0 +1,25 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+@use 'functions' as *;
+
+:root {
+  font-size: 64.5%;
+
+  // rem()で可変にする場合は下記を有効に
+  // font-size: min(#{vw(16)}, 16px);
+
+  @include mq() {
+    font-size: vw_sp(16);
+  }
+}
+
+body {
+  width: 100%;
+  min-width: 1280px;
+  color: $color-black;
+  font-family: $font-base;
+
+  @include mq() {
+    min-width: unset;
+  }
+}

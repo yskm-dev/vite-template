@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["standard", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unused-vars": 1,
+    "no-console": 1,
+    "prettier/prettier": "warning"
+  },
+  "globals": {
+    // "jQuery": true,
+    // "$": true,
+    // "window": true,
+    // "THREE": true,
+    // "GPUComputationRenderer": true
+  }
+}

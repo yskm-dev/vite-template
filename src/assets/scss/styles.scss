@@ -1,0 +1,19 @@
+@use '~destyle.css/destyle.css';
+@forward '00_base/base';
+@import '01_layout/**';
+@import '02_project/**';
+@import '03_component/**';
+@import '04_utility/**';
+
+* {
+  filter: blur(10px);
+  transform: translate(10px);
+}
+
+::placeholder {
+  color: gray;
+}
+
+.test {
+  hoge: fuga;
+}
